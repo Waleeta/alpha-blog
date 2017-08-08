@@ -1,6 +1,11 @@
 class Article < ApplicationRecord
 	belongs_to	:user
 
-	validates :user_id, :hashed_password, {presence: true}
-	validates :email, :username, {presence: true, uniqueness: true}
+	validates :user_id, :description, {presence: true}
+	validates :title, presence: true, length: { minimum: 5, maximum: 30 }
+
+
+
+
+
 end

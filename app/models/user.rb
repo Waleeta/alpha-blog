@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
 	has_many	:articles
 
+	validates :hashed_password, {presence: true}
+	validates :email, :username, {presence: true, uniqueness: true}
+
+
 	def password
     @password ||= Password.new(hashed_password)
   end
