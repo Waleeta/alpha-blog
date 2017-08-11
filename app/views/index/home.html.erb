@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head >
+	<title>Home</title>
+
+</head>
+
+<body >
+
+	<div> <%= image_tag('coffee.jpg') %> </div>
+	<h1>This is the Home page</h1>
+
+  <div>
+    <% @articles.each do |article| %>
+        <h3><%= article.title %></h3>
+        <p><%= article.description %></p>
+        <br>
+    <% end %>
+  </div>
+
+<br>
+
+
+	<footer>Go to <%=link_to 'About', index_about_path %></footer>
+  <footer>Go to <%=link_to 'Login', login_new_path %></footer>
+</body>
+</html>
