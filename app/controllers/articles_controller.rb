@@ -26,16 +26,17 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    # @user = User.find(params[:id])
+    # user_id = @user.id
+    # @user.articles.add(@article) <-- this is to add the user ID to the Article
 
-    respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
+        flash[:notice] = "Success!"
+        redirect_to articles_path
+
       else
-        format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+         render :new
       end
-    end
   end
 
   # PATCH/PUT /articles/1
@@ -70,6 +71,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, :user_id)
     end
 end
